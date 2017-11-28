@@ -11,40 +11,24 @@ ulint f1(ulint x)
     /*int div = 8;
     return x / div;*/
     ulint soma = 0;
-    
-    while(x){
-        if(!(x % 2)){
-            soma++;
-            x/=2;
-        }else{
-            return -1;
-        }
+    while (x) {
+        soma += (x % 2);
+        x/=2;
     }
+    return soma;
 }
 
 ulint f2(ulint x)
 {
     //return x >> 3;
-    ulint ref = 2;
+    ulint soma = 0;
     ulint pos = 1;
-    while(x >= ref){
-        if(x & ref && !(~ref & x)){
-            return pos;
-        }else{
-            ref <<= 1;
-            pos++;
-        }
+    
+    while (pos <= x) {
+        if ((pos & x) == pos) soma+= pos;
+        pos <<= 1;
     }
-    /*ulint soma = 0;
-    ulint pos = 0;
-    while (x) {
-        soma += x & 1;
-        x >>= 1;
-        pos++;
-        printf("%lu\n", x);
-    }
-    if (soma == 1) return pos;
-    return -1;*/
+    return soma;
 }
 
 int main(void) {

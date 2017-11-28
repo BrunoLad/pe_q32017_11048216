@@ -6,45 +6,39 @@
 
 typedef unsigned long int ulint;
 
-ulint f1(ulint x)
+ulint f1(ulint x, ulint y)
 {
     /*int div = 8;
     return x / div;*/
-    ulint soma = 0;
+    if (x > y) return x;
     
-    while(x){
-        if(!(x % 2)){
-            soma++;
-            x/=2;
-        }else{
-            return -1;
-        }
-    }
+    return y;
 }
 
-ulint f2(ulint x)
+ulint f2(ulint x, ulint y)
 {
     //return x >> 3;
-    ulint ref = 2;
-    ulint pos = 1;
-    while(x >= ref){
-        if(x & ref && !(~ref & x)){
-            return pos;
-        }else{
-            ref <<= 1;
-            pos++;
+    /*ulint yori = y;
+    ulint xori = x;
+    ulint posx = 0;
+    ulint posy = 0;
+    while (x || y) {
+        if (x) {
+            posx++;
+        } else {
+            return yori;
         }
-    }
-    /*ulint soma = 0;
-    ulint pos = 0;
-    while (x) {
-        soma += x & 1;
+        
+        if (y) {
+            posy++;
+        }else{
+            return xori;
+        }
         x >>= 1;
-        pos++;
-        printf("%lu\n", x);
+        y >>= 1;
     }
-    if (soma == 1) return pos;
-    return -1;*/
+    return x;*/
+    
 }
 
 int main(void) {
@@ -53,18 +47,18 @@ int main(void) {
     double tempo_gasto;
     ulint soma = 0;
     
-    /*tempo_init = clock();
+    tempo_init = clock();
     for(int i = 0; i<BIGNUM; i++){
-        soma+=f1(i);
+        soma+=f1(i, i+1);
     }
     tempo_fim = clock();
     tempo_gasto = (double)(tempo_fim - tempo_init) / CLOCKS_PER_SEC;
-    printf("Tempo gasto na versao normal: %lf\n", tempo_gasto);*/
+    printf("Tempo gasto na versao normal: %lf\n", tempo_gasto);
     
     soma = 0;
     tempo_init = clock();
     for (int i = 0 ; i<BIGNUM; i++) {
-        soma+=f2(i);
+        soma+=f2(i, i+1);
     }
     tempo_fim = clock();
     tempo_gasto = (double)(tempo_fim - tempo_init) / CLOCKS_PER_SEC;

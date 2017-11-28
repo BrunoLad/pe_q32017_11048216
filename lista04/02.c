@@ -8,7 +8,7 @@ typedef struct cronometro{
 
 cronometro * diferenca_tempo(cronometro *c1, cronometro *c2);
 
-int main(){
+int main() {
     
     cronometro c1;
     cronometro c2;

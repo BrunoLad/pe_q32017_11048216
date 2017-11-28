@@ -12,14 +12,14 @@ typedef struct aluno{
 
 float media_notas(aluno *a);
 
-int main(){
+int main() {
     
     FILE * fp = fopen("lista_alunos.txt", "r");
     aluno alunos[50];
     
     int i = 0;
     
-    while(i < 50){
+    while (i < 50) {
         fscanf(fp, "\%s \%d \%f \%f %f",
                     alunos[i].nome, &alunos[i].matricula, 
                     &alunos[i].p1, &alunos[i].p2, &alunos[i].p3);
@@ -30,7 +30,7 @@ int main(){
     fp = fopen("media_alunos.txt", "w");
     i = 0;
     
-    while(i < 50){
+    while (i < 50) {
         alunos[i].media = media_notas(alunos + i);
         
         fprintf(fp, "\%s \%d \%.2f \%.2f \%.2f \%.2f\n",

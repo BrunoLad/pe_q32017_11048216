@@ -9,7 +9,7 @@ typedef struct posicao{
 
 float distancia(posicao *p1, posicao *p2);
 
-int main(){
+int main() {
     posicao p1;
     posicao p2;
     
